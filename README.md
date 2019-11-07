@@ -20,9 +20,11 @@ Where `<arg>` is the depth for minimax. Suggested use case is `<arg>` <img src="
 - gcc/g++
 - GNU/Linux
 
-If you do not have C++11, you can compile with `-std=c++0x` flags instead by switching two lines:
+If C++11 is not an option, you can compile with `-std=c++0x` flag by performing the below:
 
-Replace `moveSoFar = {score, (int)c};` on both lines 158 and 177 with `moveSoFar[0] = score; moveSoFar[1] = (int)c;`.
+`$ sed -i 's/moveSoFar = {score, (int)c};/moveSoFar[0] = score; moveSoFar[1] = (int)c;/g' source.cpp`
+
+This changes two lines containing C++11 specific code and replaced with code complilable using C++0x.
 
 # Heuristic Evaluation
 
@@ -37,6 +39,6 @@ The game evaluates the board state by looking at continuous segments of four slo
 | 0               | 3               | 1          | -5,001   |
 | 0               | 4               | 0          | -500,000 |
 
-It's a simple heuristic which creates a score based on potential moves, both approaching a win or stopping a win. It will prioritize winning with a 4IAR rather than stopping a 4IAR, but otherwise will priotize stopping 2IAR/3IAR over making 2IAR/3IAR.
+It's a simple heuristic which creates a score based on potential moves, both approaching a win or stopping a win. It will prioritize winning with a 4IAR rather than stopping a 4IAR, but otherwise will prioritize stopping 2IAR/3IAR over making 2IAR/3IAR.
 
 Segments consisting of mixed pieces do not factor into the score as they don't contribute to a loss or a win. Segments consisting of only one piece of either friendly or opposing variety also do not contribute to score as they are not an immediate threat or an immediate method to victory. This is how I play Connect Four, at least.
