@@ -20,11 +20,11 @@ Where `<arg>` is the depth for minimax. Suggested use case is `<arg>` <img src="
 - gcc/g++
 - GNU/Linux
 
-If C++11 is not an option, you can compile with `-std=c++0x` flag by performing the below:
+If C++11 is not an option, you can compile with `-std=c++03` flag by performing the below:
 
 `$ sed -i 's/moveSoFar = {score, (int)c};/moveSoFar[0] = score; moveSoFar[1] = (int)c;/g' source.cpp`
 
-This changes two lines containing C++11 specific code and replaced with code complilable using C++0x.
+This changes two lines containing C++11 specific code and replaced with code complilable using C++03.
 
 # Heuristic Evaluation
 
